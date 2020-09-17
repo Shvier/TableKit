@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C0134ECD25136C5300C8140D /* TableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0134EC325136C5300C8140D /* TableKit.framework */; };
 		C0134ED225136C5300C8140D /* TableKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0134ED125136C5300C8140D /* TableKitTests.swift */; };
 		C0134ED425136C5300C8140D /* TableKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C0134EC625136C5300C8140D /* TableKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0134EE025136CC100C8140D /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0134EDF25136CC100C8140D /* Row.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		C0134ECC25136C5300C8140D /* TableKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0134ED125136C5300C8140D /* TableKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableKitTests.swift; sourceTree = "<group>"; };
 		C0134ED325136C5300C8140D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0134EDF25136CC100C8140D /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				C0134EC625136C5300C8140D /* TableKit.h */,
 				C0134EC725136C5300C8140D /* Info.plist */,
+				C0134EDF25136CC100C8140D /* Row.swift */,
 			);
 			path = TableKit;
 			sourceTree = "<group>";
@@ -144,9 +147,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = Shvier;
 				TargetAttributes = {
 					C0134EC225136C5300C8140D = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
 					};
 					C0134ECB25136C5300C8140D = {
 						CreatedOnToolsVersion = 12.0;
@@ -154,7 +159,7 @@
 				};
 			};
 			buildConfigurationList = C0134EBD25136C5300C8140D /* Build configuration list for PBXProject "TableKit" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -194,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0134EE025136CC100C8140D /* Row.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +347,7 @@
 		C0134ED825136C5300C8140D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2279X66D94;
@@ -357,6 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Shvier.TableKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +373,7 @@
 		C0134ED925136C5300C8140D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2279X66D94;
@@ -389,6 +398,7 @@
 		C0134EDB25136C5300C8140D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2279X66D94;
 				INFOPLIST_FILE = TableKitTests/Info.plist;
@@ -407,6 +417,7 @@
 		C0134EDC25136C5300C8140D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2279X66D94;
 				INFOPLIST_FILE = TableKitTests/Info.plist;
