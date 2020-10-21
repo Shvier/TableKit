@@ -16,8 +16,8 @@ protocol Row {
     var cellType: UITableViewCell.Type { get }
     var reuseIdentifier: String { get }
     
-    func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
-    func cellIsDisplaying(in tableView: UITableView, at indexPath: IndexPath, cell: UITableViewCell)
+    mutating func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> Item
+    func tableView(_ tableView: UITableView, isDisplaying cell: Item, at indexPath: IndexPath)
     
 }
 
@@ -31,14 +31,14 @@ extension Row {
         return String(describing: cellType)
     }
     
-    func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+    mutating func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> Item {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! Item
         self.cell = cell
-        cellIsDisplaying(in: tableView, at: indexPath, cell: cell)
+        self.tableView(tableView, isDisplaying: cell, at: indexPath)
         return cell
     }
     
-    func cellIsDisplaying(in tableView: UITableView, at indexPath: IndexPath, cell: UITableViewCell) {
+    func tableView(_ tableView: UITableView, isDisplaying cell: Item, at indexPath: IndexPath) {
         
     }
     
