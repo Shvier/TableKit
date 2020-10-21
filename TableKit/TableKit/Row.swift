@@ -14,15 +14,20 @@ class Row<T: UITableViewCell>: Node, ReusableProtocol {
     
     var item: T!
     
+    var height: CGFloat {
+        guard viewSize.height > 0 else {
+            return UITableView.automaticDimension
+        }
+        return viewSize.height
+    }
+    
     // MARK: - Lifecycle
     
     func tableView(_ tableView: UITableView, isDisplaying cell: Item, at indexPath: IndexPath) {
         
     }
     
-    // MARK: - Private
-    
-    private func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> Item {
+    func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> Item {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! Item
         self.item = cell
         self.tableView(tableView, isDisplaying: cell, at: indexPath)

@@ -10,11 +10,12 @@ import UIKit
 
 protocol ReusableProtocol {
     
-    associatedtype Item: UITableViewCell
+    associatedtype Item: UIView
     
     var item: Item! { get set }
     var itemType: Item.Type { get }
     var reuseIdentifier: String { get }
+    var viewSize: CGSize { get }
     
 }
 
@@ -26,6 +27,10 @@ extension ReusableProtocol {
     
     var reuseIdentifier: String {
         return String(describing: itemType)
+    }
+    
+    var viewSize: CGSize {
+        return .zero
     }
     
 }

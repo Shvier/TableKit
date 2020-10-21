@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+class Node {
+    
+    weak var parent: Node?
+    weak var previous: Node?
+    weak var next: Node?
+    
+}
