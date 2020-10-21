@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Node {
+class Node: NSObject {
     
     weak var parent: Node?
     weak var previous: Node?
