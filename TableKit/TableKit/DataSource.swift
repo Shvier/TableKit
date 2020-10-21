@@ -1,5 +1,5 @@
 //
-//  TableRow.swift
+//  DataSource.swift
 //  TableKit
 //
 //  Created by Shvier on 2020/10/21.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class Row<T: UITableViewCell>: RowProtocol {
-    typealias Item = T
+class DataSource {
     
-    var cell: T!
+    private(set) var rows = [Row]()
+    
 }
