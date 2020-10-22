@@ -21,6 +21,8 @@ class Row<T: UITableViewCell>: Node, ReusableProtocol {
         return viewSize.height
     }
     
+    var didClickRow: (() -> Void)?
+    
     // MARK: - Lifecycle
     
     func tableView(_ tableView: UITableView, isDisplaying cell: Item, at indexPath: IndexPath) {
@@ -32,6 +34,10 @@ class Row<T: UITableViewCell>: Node, ReusableProtocol {
         self.item = cell
         self.tableView(tableView, isDisplaying: cell, at: indexPath)
         return cell
+    }
+    
+    func didSelectRow(in tableView: UITableView, at indexPath: IndexPath) {
+        didClickRow?()
     }
     
 }

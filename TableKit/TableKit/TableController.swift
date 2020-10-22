@@ -23,6 +23,8 @@ class TableController: Node {
     private(set) var rows: [[Row<UITableViewCell>]] = []
     private var rowIndexesOnScreen: [[Int]] = []
     
+    weak var delegate: TableControllerDelegate?
+    
     // MARK: - Operation
     
     func append(section: Section<UITableViewHeaderFooterView>) {
@@ -159,6 +161,28 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
         let row = rows[indexPath.section][rowIndex]
         return row.height
+    }
+    
+    // MARK: -
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let row = rows[indexPath.section][indexPath.row]
+        guard let didClickRow = row.didClickRow else {
+            delegate?.didSelectRow(row)
+            return
+        }
+        didClickRow()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let row = rows[indexPath.section][indexPath.row]
+        delegate?.willDisplayRow(row)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let row = rows[indexPath.section][indexPath.row]
+        delegate?.didEndDisplayRow(row)
     }
     
 }
