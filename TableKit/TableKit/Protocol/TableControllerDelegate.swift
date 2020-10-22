@@ -10,16 +10,16 @@ import UIKit
 
 protocol TableControllerDelegate: class {
     
-    func didSelectRow(_ row: Row<UITableViewCell>)
-    func willDisplayRow(_ row: Row<UITableViewCell>)
-    func didEndDisplayRow(_ row: Row<UITableViewCell>)
+    func didSelectRow(_ row: Node & UITableViewReusableCell)
+    func willDisplayRow(_ row: Node & UITableViewReusableCell)
+    func didEndDisplayRow(_ row: Node & UITableViewReusableCell)
     
 }
 
 extension TableControllerDelegate {
     
-    func didSelectRow(_ row: Row<UITableViewCell>) {}
-    func willDisplayRow(_ row: Row<UITableViewCell>) {}
-    func didEndDisplayRow(_ row: Row<UITableViewCell>) {}
+    func didSelectRow(_ row: Node & UITableViewReusableCell) {}
+    func willDisplayRow(_ row: Node & UITableViewReusableCell) {}
+    func didEndDisplayRow(_ row: Node & UITableViewReusableCell) {}
     
 }

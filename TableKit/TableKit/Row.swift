@@ -8,29 +8,29 @@
 
 import UIKit
 
-class Row<T: UITableViewCell>: Node, ReusableProtocol {
-    
-    typealias Item = T
+class Row<T: UITableViewCell>: Node, UITableViewReusableCell {
     
     var item: T!
     
-    var height: CGFloat {
-        guard viewSize.height > 0 else {
-            return UITableView.automaticDimension
-        }
-        return viewSize.height
+    var itemType: AnyClass {
+        return T.self
+    }
+    
+    var itemHeight: CGFloat {
+        return UITableView.automaticDimension
     }
     
     var didClickRow: (() -> Void)?
     
     // MARK: - Lifecycle
     
-    func tableView(_ tableView: UITableView, isDisplaying cell: Item, at indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, isDisplaying cell: T, at indexPath: IndexPath) {
         
     }
     
-    func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> Item {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! Item
+    func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! T
         self.item = cell
         self.tableView(tableView, isDisplaying: cell, at: indexPath)
         return cell

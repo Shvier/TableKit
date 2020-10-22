@@ -19,8 +19,8 @@ class TableController: Node {
     private var sectionReusePool = Set<String>()
     private var rowReusePool = Set<String>()
     
-    private(set) var sections: [Section<UITableViewHeaderFooterView>] = []
-    private(set) var rows: [[Row<UITableViewCell>]] = []
+    private(set) var sections: [Node & UITableViewReusableSection] = []
+    private(set) var rows: [[Node & UITableViewReusableCell]] = []
     private var rowIndexesOnScreen: [[Int]] = []
     
     weak var delegate: TableControllerDelegate?
@@ -98,7 +98,7 @@ class TableController: Node {
         return indexes
     }
     
-    func updateDiffableDataSource(forSections sections: inout [Section<UITableViewHeaderFooterView>], rows: inout [[Row<UITableViewCell>]]) {
+    func updateDiffableDataSource(forSections sections: inout [Node & UITableViewReusableSection], rows: inout [[Node & UITableViewReusableCell]]) {
         
     }
     
@@ -142,7 +142,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sections[section].height
+        return sections[section].itemHeight
     }
     
     // MARK: - Row
@@ -160,7 +160,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
         let row = rows[indexPath.section][rowIndex]
-        return row.height
+        return row.itemHeight
     }
     
     // MARK: -
