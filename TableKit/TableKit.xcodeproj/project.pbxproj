@@ -11,7 +11,7 @@
 		C0134ED225136C5300C8140D /* TableKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0134ED125136C5300C8140D /* TableKitTests.swift */; };
 		C0134ED425136C5300C8140D /* TableKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C0134EC625136C5300C8140D /* TableKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0134EE025136CC100C8140D /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0134EDF25136CC100C8140D /* ReusableProtocol.swift */; };
-		C0C99959254011B100E64415 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C99958254011B100E64415 /* DataSource.swift */; };
+		C0C99959254011B100E64415 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C99958254011B100E64415 /* TableController.swift */; };
 		C0C9995D25401F2000E64415 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9995C25401F2000E64415 /* Row.swift */; };
 		C0C999652540266700E64415 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C999642540266700E64415 /* Node.swift */; };
 		C0C9997025402B8500E64415 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9996F25402B8500E64415 /* Section.swift */; };
@@ -35,7 +35,7 @@
 		C0134ED125136C5300C8140D /* TableKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableKitTests.swift; sourceTree = "<group>"; };
 		C0134ED325136C5300C8140D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0134EDF25136CC100C8140D /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
-		C0C99958254011B100E64415 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		C0C99958254011B100E64415 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		C0C9995C25401F2000E64415 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		C0C999642540266700E64415 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C0C9996F25402B8500E64415 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				C0C9996A25402A3600E64415 /* Protocol */,
 				C0134EC625136C5300C8140D /* TableKit.h */,
 				C0134EC725136C5300C8140D /* Info.plist */,
-				C0C99958254011B100E64415 /* DataSource.swift */,
+				C0C99958254011B100E64415 /* TableController.swift */,
 				C0C9995C25401F2000E64415 /* Row.swift */,
 				C0C999642540266700E64415 /* Node.swift */,
 				C0C9996F25402B8500E64415 /* Section.swift */,
@@ -220,7 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0C9997025402B8500E64415 /* Section.swift in Sources */,
-				C0C99959254011B100E64415 /* DataSource.swift in Sources */,
+				C0C99959254011B100E64415 /* TableController.swift in Sources */,
 				C0134EE025136CC100C8140D /* ReusableProtocol.swift in Sources */,
 				C0C9995D25401F2000E64415 /* Row.swift in Sources */,
 				C0C999652540266700E64415 /* Node.swift in Sources */,
