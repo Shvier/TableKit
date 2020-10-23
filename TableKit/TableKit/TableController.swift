@@ -27,7 +27,7 @@ class TableController: Node {
     
     // MARK: - Operation
     
-    func append(section: Section<UITableViewHeaderFooterView>) {
+    func append(section: Node & UITableViewReusableSection) {
         register(section: section)
         section.previous = sections.last
         section.parent = self
@@ -35,7 +35,7 @@ class TableController: Node {
         rows.append([Row<UITableViewCell>]())
     }
     
-    func append(row: Row<UITableViewCell>) {
+    func append(row: Node & UITableViewReusableCell) {
         register(row: row)
         if let lastSection = sections.last {
             row.parent = lastSection
@@ -109,7 +109,7 @@ class TableController: Node {
         tableView.dataSource = self
     }
     
-    private func register(section: Section<UITableViewHeaderFooterView>) {
+    private func register(section: Node & UITableViewReusableSection) {
         let reuseIdentifier = section.reuseIdentifier
         guard !sectionReusePool.contains(reuseIdentifier) else {
             return
@@ -118,7 +118,7 @@ class TableController: Node {
         tableView.register(section.itemType, forHeaderFooterViewReuseIdentifier: reuseIdentifier)
     }
     
-    private func register(row: Row<UITableViewCell>) {
+    private func register(row: Node & UITableViewReusableCell) {
         let reuseIdentifier = row.reuseIdentifier
         guard !rowReusePool.contains(reuseIdentifier) else {
             return
