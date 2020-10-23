@@ -14,6 +14,14 @@ protocol UITableViewReusable: Reusable {
         
 }
 
+extension UITableViewReusable {
+    
+    var itemHeight: CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+}
+
 protocol UITableViewReusableCell: UITableViewReusable {
     
     var didClickRow: (() -> Void)? { get set }
