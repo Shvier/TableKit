@@ -176,12 +176,20 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let row = rows[indexPath.section][indexPath.row]
+        guard indexPath.section < rowIndexesOnScreen.count && indexPath.row < rowIndexesOnScreen[indexPath.section].count else {
+            return
+        }
+        let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
+        let row = rows[indexPath.section][rowIndex]
         delegate?.willDisplayRow(row)
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let row = rows[indexPath.section][indexPath.row]
+        guard indexPath.section < rowIndexesOnScreen.count && indexPath.row < rowIndexesOnScreen[indexPath.section].count else {
+            return
+        }
+        let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
+        let row = rows[indexPath.section][rowIndex]
         delegate?.didEndDisplayRow(row)
     }
     
