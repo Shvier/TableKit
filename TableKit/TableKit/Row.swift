@@ -10,7 +10,7 @@ import UIKit
 
 class Row<T: UITableViewCell>: Node, UITableViewReusableCell {
     
-    var item: T!
+    var item: T?
     
     var itemType: AnyClass {
         return T.self
@@ -29,7 +29,6 @@ class Row<T: UITableViewCell>: Node, UITableViewReusableCell {
     }
     
     func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! T
         self.item = cell
         self.tableView(tableView, isDisplaying: cell, at: indexPath)
