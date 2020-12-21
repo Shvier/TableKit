@@ -33,5 +33,6 @@ protocol UITableViewReusableCell: UITableViewReusable {
 protocol UITableViewReusableSection: UITableViewReusable {
 
     func dequeueReusableView(in tableView: UITableView, in section: Int ) -> UITableViewHeaderFooterView
+    func updateSectionState()
     
 }

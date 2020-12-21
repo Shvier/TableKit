@@ -38,9 +38,15 @@ class TableController: Node {
     func append(row: Node & UITableViewReusableCell) {
         register(row: row)
         if let lastSection = sections.last {
+            if let next = lastSection.next {
+                row.previous = next
+            } else {
+                lastSection.next = row
+            }
             row.parent = lastSection
         } else {
             let section = Section<UITableViewHeaderFooterView>()
+            register(section: section)
             section.next = row
             sections.append(section)
             row.parent = section
@@ -59,6 +65,27 @@ class TableController: Node {
         sections.removeAll()
         rows.removeAll()
         rowIndexesOnScreen.removeAll()
+    }
+    
+    func remove(row: Node & UITableViewReusableCell) {
+        for sectionIndex in 0..<rows.count {
+            var rowGroup = rows[sectionIndex]
+            guard let rowIndex = rowGroup.firstIndex(where: { $0 === row}) else {
+                continue
+            }
+            row.previous?.next = row.next
+            row.next?.previous = row.previous
+            if rowIndex == 0 {
+                row.parent?.next = row.next
+            }
+            rowGroup.remove(at: rowIndex)
+            rows[sectionIndex] = rowGroup
+            rowIndexesOnScreen[sectionIndex] = reloadRowIndexes(atSection: sectionIndex)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [IndexPath(row: rowIndex, section: sectionIndex)], with: .automatic)
+            tableView.endUpdates()
+            return
+        }
     }
     
     func reloadData() {
@@ -82,6 +109,7 @@ class TableController: Node {
     func reloadRowIndexes(atSection index: Int) -> [Int] {
         updateDiffableDataSource(forSections: &sections, rows: &rows)
         let section = sections[index]
+        section.updateSectionState()
         guard let startRow = section.next else {
             return []
         }
@@ -95,7 +123,9 @@ class TableController: Node {
             }
             iterator = iterator?.next
         }
-        return indexes
+        return indexes.enumerated().map { (index, _) -> Int in
+            return index
+        }
     }
     
     func updateDiffableDataSource(forSections sections: inout [Node & UITableViewReusableSection], rows: inout [[Node & UITableViewReusableCell]]) {

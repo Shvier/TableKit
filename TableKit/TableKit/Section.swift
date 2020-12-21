@@ -33,4 +33,8 @@ class Section<T: UITableViewHeaderFooterView>: Node, UITableViewReusableSection 
         return view
     }
     
+    func updateSectionState() {
+
+    }
+    
 }
