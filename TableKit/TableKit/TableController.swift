@@ -168,10 +168,18 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return sections[section].dequeueReusableView(in: tableView, in: section)
+        let sectionNode = sections[section]
+        guard !sectionNode.isKind(of: Section<UITableViewHeaderFooterView>.self) else {
+            return nil
+        }
+        return sectionNode.dequeueReusableView(in: tableView, in: section)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return sections[section].itemHeight
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return sections[section].itemHeight
     }
     
@@ -193,11 +201,18 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         return row.itemHeight
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
+        let row = rows[indexPath.section][rowIndex]
+        return row.itemHeight
+    }
+    
     // MARK: -
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let row = rows[indexPath.section][indexPath.row]
+        let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
+        let row = rows[indexPath.section][rowIndex]
         guard let didClickRow = row.didClickRow else {
             delegate?.didSelectRow(row)
             return
