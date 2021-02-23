@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TableControllerDelegate: class {
+public protocol TableControllerDelegate: class {
     
     func didSelectRow(_ row: Node & UITableViewReusableCell)
     func willDisplayRow(_ row: Node & UITableViewReusableCell)

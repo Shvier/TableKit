@@ -8,19 +8,19 @@
 
 import UIKit
 
-class Row<T: UITableViewCell>: Node, UITableViewReusableCell {
+open class Row<T: UITableViewCell>: Node, UITableViewReusableCell {
     
     var item: T?
     
-    var itemType: AnyClass {
+    public var itemType: AnyClass {
         return T.self
     }
     
-    var itemHeight: CGFloat {
+    public var itemHeight: CGFloat {
         return UITableView.automaticDimension
     }
     
-    var didClickRow: (() -> Void)?
+    public var didClickRow: (() -> Void)?
     
     // MARK: - Lifecycle
     
@@ -28,7 +28,7 @@ class Row<T: UITableViewCell>: Node, UITableViewReusableCell {
         
     }
     
-    func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+    public func dequeueReusableCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! T
         self.item = cell
         self.tableView(tableView, isDisplaying: cell, at: indexPath)

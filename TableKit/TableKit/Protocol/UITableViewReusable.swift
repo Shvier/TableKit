@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UITableViewReusable: Reusable {
+public protocol UITableViewReusable: Reusable {
     
     var itemHeight: CGFloat { get }
         
@@ -22,7 +22,7 @@ extension UITableViewReusable {
     
 }
 
-protocol UITableViewReusableCell: UITableViewReusable {
+public protocol UITableViewReusableCell: UITableViewReusable {
     
     var didClickRow: (() -> Void)? { get set }
 
@@ -30,7 +30,7 @@ protocol UITableViewReusableCell: UITableViewReusable {
     
 }
 
-protocol UITableViewReusableSection: UITableViewReusable {
+public protocol UITableViewReusableSection: UITableViewReusable {
 
     func dequeueReusableView(in tableView: UITableView, in section: Int ) -> UITableViewHeaderFooterView
     func updateSectionState()

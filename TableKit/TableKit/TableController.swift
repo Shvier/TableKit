@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableController: Node {
+open class TableController: Node {
     
     let tableView: UITableView
     
@@ -163,11 +163,11 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Section
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionNode = sections[section]
         guard !sectionNode.isKind(of: Section<UITableViewHeaderFooterView>.self) else {
             return nil
@@ -175,33 +175,33 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         return sectionNode.dequeueReusableView(in: tableView, in: section)
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sections[section].itemHeight
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return sections[section].itemHeight
     }
     
     // MARK: - Row
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowIndexesOnScreen[section].count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
         let row = rows[indexPath.section][rowIndex]
         return row.dequeueReusableCell(in: tableView, at: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
         let row = rows[indexPath.section][rowIndex]
         return row.itemHeight
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
         let row = rows[indexPath.section][rowIndex]
         return row.itemHeight
@@ -209,7 +209,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: -
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let rowIndex = rowIndexesOnScreen[indexPath.section][indexPath.row]
         let row = rows[indexPath.section][rowIndex]
@@ -220,7 +220,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         didClickRow()
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard indexPath.section < rowIndexesOnScreen.count && indexPath.row < rowIndexesOnScreen[indexPath.section].count else {
             return
         }
@@ -229,7 +229,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         delegate?.willDisplayRow(row)
     }
     
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard indexPath.section < rowIndexesOnScreen.count && indexPath.row < rowIndexesOnScreen[indexPath.section].count else {
             return
         }

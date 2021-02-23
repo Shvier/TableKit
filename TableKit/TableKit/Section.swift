@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Section<T: UITableViewHeaderFooterView>: Node, UITableViewReusableSection {
+open class Section<T: UITableViewHeaderFooterView>: Node, UITableViewReusableSection {
     
-    var itemType: AnyClass {
+    public var itemType: AnyClass {
         return T.self
     }
     
-    var itemHeight: CGFloat {
+    public var itemHeight: CGFloat {
         return UITableView.automaticDimension
     }
     
@@ -26,14 +26,14 @@ class Section<T: UITableViewHeaderFooterView>: Node, UITableViewReusableSection 
         
     }
     
-    func dequeueReusableView(in tableView: UITableView, in section: Int) -> UITableViewHeaderFooterView {
+    public func dequeueReusableView(in tableView: UITableView, in section: Int) -> UITableViewHeaderFooterView {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseIdentifier) as! T
         self.item = view
         self.tableView(tableView, isDisplaying: view, in: section)
         return view
     }
     
-    func updateSectionState() {
+    public func updateSectionState() {
 
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Reusable {
+public protocol Reusable {
     
     var itemType: AnyClass { get }
     var reuseIdentifier: String { get }
@@ -17,7 +17,7 @@ protocol Reusable {
 
 extension Reusable {
     
-    var reuseIdentifier: String {
+    public   var reuseIdentifier: String {
         return String(describing: itemType)
     }
 
