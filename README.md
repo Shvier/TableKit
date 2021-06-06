@@ -48,4 +48,4 @@ tableController.reloadData()
 
 ### License
 
-Kingfisher is released under the MIT license. See LICENSE for details.
+TableKit is released under the MIT license. See LICENSE for details.
